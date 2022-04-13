@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import Animated, { interpolate } from 'react-native-reanimated';
 
@@ -10,7 +9,7 @@ interface DotProps {
 const Dot = ({ index, currentIndex }: DotProps) => {
   const opacity = interpolate(currentIndex, {
     inputRange: [index - 1, index, index + 1],
-    outputRange: [0.5, 1, 0.5],
+    outputRange: [0.3, 1, 0.3],
     extrapolate: 'clamp',
   });
 
@@ -23,5 +22,3 @@ const Dot = ({ index, currentIndex }: DotProps) => {
 };
 
 export default Dot;
-
-const styles = StyleSheet.create({});

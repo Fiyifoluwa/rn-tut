@@ -1,20 +1,32 @@
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import React from 'react';
 import { RectButton } from 'react-native-gesture-handler';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from './Theme';
+import { Text } from '../components';
 
 interface ButtonProps {
-  variant: 'default' | 'primary';
-  label: string;
+  variant: 'default' | 'primary' | 'transparent';
+  label?: string;
   onPress: () => void;
+  children?: React.ReactNode;
 }
 
-const Button = ({ variant, label, onPress }: ButtonProps) => {
-  const backgroundColor = variant === 'primary' ? '#2CB9B0' : 'rgba(12, 13, 52, 0.05)';
-  const color = variant === 'primary' ? '#fff' : '#0C0D34';
+const Button = ({ variant, label, onPress, children }: ButtonProps) => {
+  const theme = useTheme<Theme>();
+
+  const backgroundColor = variant === 'primary' ? theme.colors.primary : variant === 'transparent' ? 'transparent' : theme.colors.grey;
+  const color = variant === 'primary' ? theme.colors.white : theme.colors.secondary;
 
   return (
     <RectButton style={[styles.container, { backgroundColor }]} {...{ onPress }}>
-      <Text style={[styles.label, { color }]}>{label}</Text>
+      {children ? (
+        children
+      ) : (
+        <Text variant="button" style={{ color }}>
+          {label}
+        </Text>
+      )}
     </RectButton>
   );
 };
@@ -34,8 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   label: {
-    // update font
-    fontFamily: 'SFProText-Regular',
+    fontFamily: 'SFProDisplay-Regular',
     fontSize: 15,
     color: '#F4F5F8',
     textAlign: 'center',

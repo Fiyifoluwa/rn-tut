@@ -1,34 +1,26 @@
 import * as React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { ThemeProvider } from '@shopify/restyle';
 
-import { Onboarding, Welcome } from './src/Auth/';
-import LoadAssets from './src/components/LoadAssets';
-import { enableScreens } from 'react-native-screens';
+import { LoadAssets, theme } from './src/components';
 
-enableScreens();
+import { AuthNavigator } from './src/Auth';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const fonts = {
-  'SFProText-Bold': require('./assets/fonts/SF-Pro-Text-Bold.otf'),
-  'SFProText-Semibold': require('./assets/fonts/SF-Pro-Text-Semibold.otf'),
-  'SFProText-Regular': require('./assets/fonts/SF-Pro-Text-Regular.otf'),
-};
-
-// const assets = [...cardAssets, ...examplesAssets];
-
-const AuthStack = createNativeStackNavigator();
-const AuthNavigator = () => {
-  return (
-    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-      <AuthStack.Screen name="Onboarding" component={Onboarding} />
-      <AuthStack.Screen name="Welcome" component={Welcome} />
-    </AuthStack.Navigator>
-  );
+  'SFProDisplay-Bold': require('./assets/fonts/SFProDisplay-Bold.ttf'),
+  'SFProDisplay-Medium': require('./assets/fonts/SFProDisplay-Medium.ttf'),
+  'SFProDisplay-Semibold': require('./assets/fonts/SFProDisplay-Semibold.ttf'),
+  'SFProDisplay-Regular': require('./assets/fonts/SFProDisplay-Regular.ttf'),
 };
 
 export default function App() {
   return (
-    <LoadAssets {...{ fonts }}>
-      <AuthNavigator />
-    </LoadAssets>
+    <ThemeProvider {...{ theme }}>
+      <LoadAssets {...{ fonts }}>
+        <SafeAreaProvider>
+          <AuthNavigator />
+        </SafeAreaProvider>
+      </LoadAssets>
+    </ThemeProvider>
   );
 }
