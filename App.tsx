@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { ThemeProvider } from '@shopify/restyle';
 
-import { LoadAssets, theme } from './src/components';
+import { LoadAssets } from './src/components';
+
+import { theme } from './src/components/Theme';
 
 import { AuthNavigator } from './src/Auth';
 import { SafeAreaProvider } from 'react-native-safe-area-context';

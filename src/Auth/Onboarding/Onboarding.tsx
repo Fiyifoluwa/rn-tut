@@ -1,17 +1,45 @@
 import { View, StyleSheet, Dimensions } from 'react-native';
-import React, { FC, useRef } from 'react';
+import React, { useRef } from 'react';
 import { interpolateColor, useScrollHandler } from 'react-native-redash';
 import Animated, { divide, multiply } from 'react-native-reanimated';
 
 import { Slide, SLIDE_HEIGHT } from './Slide';
 import SubSlide from './SubSlide';
 import Dot from './Dot';
-import { theme } from '../../components';
 import { AppRoutes, StackNavigationProps } from '../../components/Navigation';
-
-interface OnboardingProps {}
+import { makeStyles, Theme } from '../../components/Theme';
 
 const { width } = Dimensions.get('window');
+
+const useStyles = makeStyles((theme: Theme) => ({
+  container: { flex: 1, backgroundColor: 'white' },
+  slider: { height: SLIDE_HEIGHT, borderBottomRightRadius: theme.borderRadii.xl },
+  footer: { flex: 1 },
+  footerContent: { flex: 1, backgroundColor: 'white', borderTopLeftRadius: theme.borderRadii.xl },
+  pagination: {
+    height: theme.borderRadii.xl,
+    flexDirection: 'row',
+    // backgroundColor: 'rgba(100, 200, 300, 0.5)',
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  /*
+  if there were pictures
+  underlay: {
+    ...StyleSheet.absoluteFillObject,
+justifyContent: 'flex-end',
+alignItems: 'center',
+borderBottomRightRadius: theme.borderRadii.xl,
+overflow: 'hidden',
+  }, 
+  picture: {
+        // ...StyleSheet.absoluteFillObject,
+        // borderBottomRightRadius: theme.borderRadii.xl,
+  }
+*/
+}));
+
 // const BORDER_RADIUS = 75;
 
 const slides = [
@@ -38,7 +66,8 @@ const slides = [
   { title: 'Funky', subtitle: 'Look Good, Feel Good', description: 'Discover the latest trends in fashion and explore your personality', color: '#FFDDDD' },
 ];
 
-const Onboarding: FC<OnboardingProps> = ({ navigation }: StackNavigationProps<AppRoutes, 'Onboarding'>) => {
+const Onboarding = ({ navigation }: StackNavigationProps<AppRoutes, 'Onboarding'>) => {
+  const styles = useStyles();
   const scroll = useRef<Animated.ScrollView>(null);
   const { scrollHandler, x } = useScrollHandler();
   // const onScroll = onScrollEvent({ x });
@@ -121,34 +150,5 @@ const Onboarding: FC<OnboardingProps> = ({ navigation }: StackNavigationProps<Ap
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'white' },
-  slider: { height: SLIDE_HEIGHT, borderBottomRightRadius: theme.borderRadii.xl },
-  footer: { flex: 1 },
-  footerContent: { flex: 1, backgroundColor: 'white', borderTopLeftRadius: theme.borderRadii.xl },
-  pagination: {
-    height: theme.borderRadii.xl,
-    flexDirection: 'row',
-    // backgroundColor: 'rgba(100, 200, 300, 0.5)',
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  /*
-  if there were pictures
-  underlay: {
-    ...StyleSheet.absoluteFillObject,
-justifyContent: 'flex-end',
-alignItems: 'center',
-borderBottomRightRadius: theme.borderRadii.xl,
-overflow: 'hidden',
-  }, 
-  picture: {
-        // ...StyleSheet.absoluteFillObject,
-        // borderBottomRightRadius: theme.borderRadii.xl,
-  }
-*/
-});
 
 export default Onboarding;

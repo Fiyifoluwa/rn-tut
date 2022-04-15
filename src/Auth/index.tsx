@@ -11,6 +11,8 @@ import { AppRoutes } from '../components/Navigation';
 import Onboarding from './Onboarding';
 import Welcome from './Welcome';
 import Login from './Login';
+import Signup from './Signup';
+import ForgotPassword from './ForgotPassword';
 
 const AuthStack = createNativeStackNavigator<AppRoutes>();
 
@@ -20,6 +22,8 @@ export const AuthNavigator = () => {
       <AuthStack.Screen name="Onboarding" component={Onboarding} />
       <AuthStack.Screen name="Welcome" component={Welcome} />
       <AuthStack.Screen name="Login" component={Login} />
+      <AuthStack.Screen name="Signup" component={Signup} />
+      <AuthStack.Screen name="ForgotPassword" component={ForgotPassword} />
     </AuthStack.Navigator>
   );
 };

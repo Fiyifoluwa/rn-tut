@@ -1,11 +1,7 @@
-import { View, Text } from 'react-native';
 import React, { ReactNode } from 'react';
 import Svg, { G, Rect, Path } from 'react-native-svg';
 import { Box } from '../../components';
 
-// interface SocialLoginProps{
-
-// }
 interface SocialIconProps {
   children: ReactNode;
 }

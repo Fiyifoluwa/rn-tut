@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native';
 import React from 'react';
 import { Box, Button, Text } from '../../components';
 import { AppRoutes, StackNavigationProps } from '../../components/Navigation';
@@ -29,8 +28,8 @@ const Welcome = ({ navigation }: StackNavigationProps<AppRoutes, 'Welcome'>) => 
           </Text>
 
           <Button variant={'primary'} label={'Have an account? Login'} onPress={() => navigation.navigate('Login')} />
-          <Button label={"Join us, it's free"} />
-          <Button variant="transparent" label={'Forgot password?'} />
+          <Button label={"Join us, it's free"} onPress={() => true} />
+          <Button variant="transparent" label={'Forgot password?'} onPress={() => true} />
         </Box>
       </Box>
     </Box>
@@ -38,9 +37,3 @@ const Welcome = ({ navigation }: StackNavigationProps<AppRoutes, 'Welcome'>) => 
 };
 
 export default Welcome;
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 20,
-  },
-});
