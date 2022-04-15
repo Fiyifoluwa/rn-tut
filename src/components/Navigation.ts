@@ -12,4 +12,5 @@ export type AppRoutes = {
   Login: undefined;
   Signup: undefined;
   ForgotPassword: undefined;
+  ConfirmPasswordReset: undefined;
 };

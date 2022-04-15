@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Button, Text } from '../../components';
-import { AppRoutes, StackNavigationProps } from '../../components/Navigation';
+import { Box, Button, Text } from '../components';
+import { AppRoutes, StackNavigationProps } from '../components/Navigation';
 
 // const picture = {
 //   src: require('../../assets/images/onboarding-1.png'),
@@ -28,8 +28,8 @@ const Welcome = ({ navigation }: StackNavigationProps<AppRoutes, 'Welcome'>) => 
           </Text>
 
           <Button variant={'primary'} label={'Have an account? Login'} onPress={() => navigation.navigate('Login')} />
-          <Button label={"Join us, it's free"} onPress={() => true} />
-          <Button variant="transparent" label={'Forgot password?'} onPress={() => true} />
+          <Button label={"Join us, it's free"} onPress={() => navigation.navigate('Signup')} />
+          <Button variant="transparent" label={'Forgot password?'} onPress={() => navigation.navigate('ForgotPassword')} />
         </Box>
       </Box>
     </Box>

@@ -5,19 +5,20 @@ import TextInput from './components/Form/TextInput';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Footer from './components/Footer';
+import { AppRoutes, StackNavigationProps } from '../components/Navigation';
 
 const ValidationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 });
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ navigation }: StackNavigationProps<AppRoutes, 'ForgotPassword'>) => {
   const footer = <Footer title={"Didn't work?"} action={'Try another way'} onPress={() => true} />;
 
   const { handleChange, handleBlur, handleSubmit, errors, touched } = useFormik({
     initialValues: {
       email: '',
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: () => navigation.navigate('ConfirmPasswordReset'),
     validationSchema: ValidationSchema,
   });
 
