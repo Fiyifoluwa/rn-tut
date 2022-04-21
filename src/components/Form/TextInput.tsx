@@ -1,9 +1,9 @@
 import { StyleSheet, TextInput as Input, TextInputProps as InputProps } from 'react-native';
 import React, { forwardRef } from 'react';
-import { Box } from '../../../components';
+import { Box } from '..';
 import { Feather as Icon } from '@expo/vector-icons';
 import { useTheme } from '@shopify/restyle';
-import { Theme } from '../../../components/Theme';
+import { Theme } from '../Theme';
 
 interface TextInputProps extends InputProps {
   icon?: string | undefined;

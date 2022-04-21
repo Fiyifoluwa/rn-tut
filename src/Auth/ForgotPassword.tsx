@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Box, Button, Container, Text } from '../components';
-import TextInput from './components/Form/TextInput';
+import TextInput from '../components/Form/TextInput';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Footer from './components/Footer';
@@ -23,7 +23,7 @@ const ForgotPassword = ({ navigation }: StackNavigationProps<AppRoutes, 'ForgotP
   });
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={2} {...{ footer }}>
       <Box padding={'xl'} justifyContent={'center'} flex={1}>
         <Text variant={'title1'} textAlign={'center'} marginBottom={'l'}>
           Forgot password?

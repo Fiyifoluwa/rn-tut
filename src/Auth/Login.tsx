@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 
 import { Box, Button, Container, Text } from '../components';
-import TextInput from './components/Form/TextInput';
-import Checkbox from './components/Form/Checkbox';
+import TextInput from '../components/Form/TextInput';
+import Checkbox from '../components/Form/Checkbox';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Footer from './components/Footer';
@@ -29,7 +29,7 @@ const Login = ({ navigation }: StackNavigationProps<AppRoutes, 'Login'>) => {
   const passwordRef = useRef<typeof TextInput>(null);
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={0} {...{ footer }}>
       <Box padding={'xl'}>
         <Text variant={'title1'} textAlign={'center'} marginBottom={'l'}>
           Welcome back!

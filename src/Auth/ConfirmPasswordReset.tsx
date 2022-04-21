@@ -9,7 +9,7 @@ const ConfirmPasswordReset = ({ navigation }: StackNavigationProps<AppRoutes, 'C
   // const footer = true;
 
   return (
-    <Container {...{ footer }}>
+    <Container pattern={3} {...{ footer }}>
       <Box padding={'xl'} justifyContent={'center'} flex={1}>
         <Box alignItems={'center'} alignSelf={'center'} borderRadius={'xl'} marginBottom={'l'} padding={'m'} backgroundColor={'primaryLight'}>
           <Icon name="check" size={24} color={'rgb(44,185,176)'} />
